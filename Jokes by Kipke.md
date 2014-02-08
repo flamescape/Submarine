@@ -10,3 +10,6 @@
 
 ## Cats
 2014-02-08 21:11 -- Cat on LDS -- http://youtu.be/8UPLEwK70XA
+
+## Regular Fun
+2014-02-08 22:58 -- Pink Logo  -- http://puu.sh/6OPGp.png
