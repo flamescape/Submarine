@@ -57,7 +57,7 @@
 <script>
 angular.module('app', [])
     
-    .factory('rtc', function(){
+    .factory('rtc', function($rootScope){
         var listeners = [];
         
         var rtc = {
@@ -69,12 +69,17 @@ angular.module('app', [])
         };
         
         conn.then(function(c){
-            rtc.connected = true;
-            
-        });
-        
-        conn.progressed(function(id){
-            console.log('id',id);
+            $rootScope.$apply(function(){
+                rtc.connected = true;
+            });
+            c.on('data', function(data){
+                $rootScope.$apply(function(){
+                    _.each(listeners, function(l){
+                        l(data);
+                    });
+                });
+            });
+            rtc.send = c.send.bind(c);
         });
         
         return rtc;

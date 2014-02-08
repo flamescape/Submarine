@@ -52,5 +52,3 @@ var conn = new Promise(function(resolve, reject){
         });
     }
 });
-
-conn.then(function(){ console.log('arguments') });
