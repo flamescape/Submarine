@@ -28,9 +28,6 @@ var createBoard = function(length) {
     return threeD;
 };
 
-var audioControls = document.getElementById("audio_controls");
-audioControls.addEventListener("click", toggleAudio(audioControls), false);
-
 myBoard = createBoard(length);
 
 //Initialize the connection
