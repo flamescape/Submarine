@@ -16,7 +16,7 @@ html,body,#canvas {
 #controls h1 {
     margin: 0;
     padding: 0;
-    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
+    font-family: "Black Ops One", Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
     color: #FDFDFF;
     text-shadow: 1px 1px 0 #333, 2px 2px 0px #333, 3px 3px 0 #333;
 }
