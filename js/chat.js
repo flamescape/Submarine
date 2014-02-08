@@ -59,7 +59,11 @@ angular.module('app', [])
 
     .controller('AudioCtrl', function($scope, rtc) {
         $scope.muteAudio = function(){
-            console.log("ey");
+            var audiosAmigo = document.getElementsByTagName("audio");
+            _.each(audiosAmigo, function(ele, i, list) { 
+
+                ele.muted = !ele.muted;
+            });
         };
 
     })
