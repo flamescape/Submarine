@@ -55,7 +55,7 @@ myBoard = createBoard(length);
 //Initialize the connection
 if (window.location.hash !== "") {
     //Player 2
-    url.setAttribute("value", "Conntecting...");
+    url.setAttribute("value", "Connecting...");
     conn = peer.connect(window.location.hash.substr(1));
 
     conn.on('open', function() {
