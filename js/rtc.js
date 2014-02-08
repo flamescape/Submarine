@@ -1,3 +1,6 @@
+var length = 5;
+var myBoard;
+var ships = [5, 4, 3, 3, 2];
 var conn;
 var peer = new Peer({key: "t1oqjc5cdoenrk9"});
 var txt = document.getElementById("txt");
@@ -10,6 +13,44 @@ var recieveData = function(data) {
 var connected = function() {
     url.setAttribute("value", "Connected!");
 };
+
+//Send message and clear text box
+var sendMessage = function() {
+    var msg = document.getElementById("msg");
+    conn.send(msg.value);
+    msg.value = "";
+};
+
+//Bind button to send message
+var form = document.getElementById("button");
+
+if (form.addEventListener) {
+    form.addEventListener("click", sendMessage, false);
+} else if (form.attachEvent) {
+    form.attachEvent("onclick", sendMessage);
+}
+
+//Create an empty length^3 board
+var createBoard = function(length) {
+    var oneD = [];
+    for (var i = 0; i < length; i++) {
+        oneD.push(false);
+    }
+
+    var twoD = [];
+    for (i = 0; i < length; i++) {
+        twoD.push(oneD);
+    }
+
+    var threeD = [];
+    for (i = 0; i < length; i++) {
+        threeD.push(twoD);
+    }
+
+    return threeD;
+};
+
+myBoard = createBoard(length);
 
 //Initialize the connection
 if (window.location.hash !== "") {
@@ -32,21 +73,5 @@ if (window.location.hash !== "") {
         conn = c;
         conn.on('data', recieveData);
     });
-}
-
-//Send message and clear text box
-var sendMessage = function() {
-    var msg = document.getElementById("msg");
-    conn.send(msg.value);
-    msg.value = "";
-};
-
-//Bind button to send message
-var form = document.getElementById("button");
-
-if (form.addEventListener) {
-    form.addEventListener("click", sendMessage, false);
-} else if (form.attachEvent) {
-    form.attachEvent("onclick", sendMessage);
 }
 

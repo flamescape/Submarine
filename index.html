@@ -13,8 +13,19 @@
     <textarea id="txt" readonly></textarea>
     <input type="text" id="msg" placeholder="a/s/l?">
     <button id="button" autofocus>Send</button>
+    <div id="placement">
+        <input type="number" max="5" min="1" value="1">
+        <input type="number" max="5" min="1" value="1">
+        <input type="number" max="5" min="1" value="1">
+        <button id="rotate">Rotate</button>
+        <button id="place">Place</button>
+    </div>
 </div>
 <canvas id="canvas"></canvas>
+
+<audio autoplay loop>
+<source src="audio/ambient.ogg" type="audio/ogg">
+</audio>
 
 <script src="js/lib/underscore-min.js"></script>
 <script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
