@@ -21,8 +21,9 @@ html,body,#canvas {
 #controls {
     height: 100%;
     width: 300px;
-    background-color: #2F4F4F;
+    background-color: #253d3d;
     position: absolute;
+    box-shadow: inset 0px 0px 50px 20px #2F4F4F;
 }
 
 #controls h1 {
