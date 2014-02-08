@@ -1,25 +1,8 @@
 var length = 5;
 var myBoard;
 var ships = [5, 4, 3, 3, 2];
-var conn;
 var peer = new Peer({key: "t1oqjc5cdoenrk9"});
-var txt = document.getElementById("txt");
-var url = document.getElementById("url");
-
-var recieveData = function(data) {
-    txt.innerHTML = data;
-};
-
-var connected = function() {
-    url.setAttribute("value", "Connected!");
-};
-
-//Send message and clear text box
-var sendMessage = function() {
-    var msg = document.getElementById("msg");
-    conn.send(msg.value);
-    msg.value = "";
-};
+var url = document.getElementById('url');
 
 var toggleAudio = function() {
 
@@ -45,35 +28,29 @@ var createBoard = function(length) {
     return threeD;
 };
 
-//Bind elements to send message
-var form = document.getElementById("button");
-form.addEventListener("click", sendMessage, false);
-
 var audioControls = document.getElementById("audio_controls");
 audioControls.addEventListener("click", toggleAudio(audioControls), false);
 
 myBoard = createBoard(length);
 
 //Initialize the connection
-if (window.location.hash !== "") {
-    //Player 2
-    url.setAttribute("value", "Connecting...");
-    conn = peer.connect(window.location.hash.substr(1));
+var conn = new Promise(function(resolve, reject){
+    if (window.location.hash === "") {
+        //Player 1 (the one starting the game)
+        peer.on("open", function(id) {
+            url.value = window.location.origin + "/#" + id;
+            peer.on('connection', function(c) {
+                resolve(c);
+            });
+        });
+    } else {
+        //Player 2 (the one joining a game)
+        var id = window.location.hash.substr(1);
+        var c = peer.connect(id);
+        c.on('open', function() {
+            resolve(c);
+        });
+    }
+});
 
-    conn.on('open', function() {
-        connected(conn);
-        conn.on('data', recieveData);
-    });
-} else {
-    //Player 1
-    peer.on("open", function(id) {
-        url.setAttribute("value", window.location.origin + "/#" + id);
-    });
-
-    peer.on('connection', function(c) {
-        conn = c;
-        connected(conn);
-        conn.on('data', recieveData);
-    });
-}
-
+conn.then(function(){ console.log('arguments') });

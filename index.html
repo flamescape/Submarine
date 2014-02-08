@@ -12,13 +12,15 @@
     <input type="text" id="url" readonly>
     
     <div ng-controller="ChatCtrl">
+        <h2 ng-if="rtc.connected">Connected Motherfucker!</h2>
+        <h2 ng-if="!rtc.connected">Waiting for partner...</h2>
+        
         <div class="chat-box">
             <article ng-repeat="msg in messages"><b ng-class="{localuser:msg.local}">{{msg.who}}</b>: {{msg.txt}}</article>
         </div>
         <div class="chat-controls">
-            <!--<textarea id="txt" readonly></textarea>-->
-            <input ng-disabled="!connected" type="text" ng-model="message" placeholder="a/s/l?" ng-keypress="$event.keyCode === 13 && sendMessage()">
-            <button ng-disabled="!connected" ng-click="sendMessage()">Send</button>
+            <input ng-disabled="!rtc.connected" type="text" ng-model="message" placeholder="a/s/l?" ng-keypress="$event.keyCode === 13 && sendMessage()">
+            <button ng-disabled="!rtc.connected" ng-click="sendMessage()">Send</button>
         </div>
     </div>
     
@@ -42,6 +44,7 @@
 </audio>
 
 <script src="js/lib/underscore-min.js"></script>
+<script src="js/lib/bluebird.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular.min.js"></script>
 <script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
 <script src="js/lib/babylon.min.js"></script>
@@ -55,12 +58,24 @@
 angular.module('app', [])
     
     .factory('rtc', function(){
+        var listeners = [];
+        
         var rtc = {
             connected: false,
-            send: function(){}
+            send: null,
+            onData: function(func){
+                listeners.push(func);
+            }
         };
         
-        rtc.connected = true;
+        conn.then(function(c){
+            rtc.connected = true;
+            
+        });
+        
+        conn.progressed(function(id){
+            console.log('id',id);
+        });
         
         return rtc;
     })
@@ -69,8 +84,8 @@ angular.module('app', [])
         $scope.messages = [];
         $scope.message = '';
         $scope.rtc = rtc;
-        /*
-        rtc.on('data', function(data){
+        
+        rtc.onData(function(data){
             if (!data || !data.msgType || data.msgType !== 'chat') return;
             $scope.messages.push({
                 who:'Them',
@@ -78,7 +93,7 @@ angular.module('app', [])
                 txt: data.txt
             });
         });
-        */
+        
         $scope.sendMessage = function(){
             rtc.send({msgType:'chat', txt:$scope.message});
             $scope.messages.push({
