@@ -15,7 +15,7 @@
 
 ## Audio Sources
 
-## Contributers
+## Contributors
 
 * Gareth
 * John
