@@ -2,11 +2,15 @@
 var Gameboard = function(x,y,z){
     //create grid
     
+    
+    
     this.grid = this.createGrid(x,y,z, Game.SPACE_EMPTY);
     this.gridGraphics = this.createGrid(x,y,z, function(x,y,z){
-        var box = BABYLON.Mesh.CreateBox("Box", 0.8, Game.scene);
+        var materialEmptyCube = new BABYLON.StandardMaterial("texture1", Game.scene);
+        materialEmptyCube.alpha = 1 - (0.2 * y);
+        var box = BABYLON.Mesh.CreateBox("Box", 0.9, Game.scene);
         box.position = new BABYLON.Vector3(x,y,z);
-        box.material = Game.materialEmptyCube;
+        box.material = materialEmptyCube;
         return box;
     });
 
