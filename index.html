@@ -17,8 +17,8 @@
         </div>
         <div class="chat-controls">
             <!--<textarea id="txt" readonly></textarea>-->
-            <input type="text" ng-model="message" placeholder="a/s/l?" ng-keypress="$event.keyCode === 13 && sendMessage()">
-            <button ng-click="sendMessage()">Send</button>
+            <input ng-disabled="!connected" type="text" ng-model="message" placeholder="a/s/l?" ng-keypress="$event.keyCode === 13 && sendMessage()">
+            <button ng-disabled="!connected" ng-click="sendMessage()">Send</button>
         </div>
     </div>
     
@@ -55,14 +55,20 @@
 angular.module('app', [])
     
     .factory('rtc', function(){
-        return {
+        var rtc = {
+            connected: false,
             send: function(){}
         };
+        
+        rtc.connected = true;
+        
+        return rtc;
     })
     
     .controller('ChatCtrl', function($scope, rtc){
         $scope.messages = [];
         $scope.message = '';
+        $scope.rtc = rtc;
         /*
         rtc.on('data', function(data){
             if (!data || !data.msgType || data.msgType !== 'chat') return;
