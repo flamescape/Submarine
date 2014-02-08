@@ -61,7 +61,7 @@ if (window.location.hash !== "") {
     conn = peer.connect(window.location.hash.substr(1));
 
     conn.on('open', function() {
-        connected();
+        connected(conn);
         conn.on('data', recieveData);
     });
 } else {
@@ -71,8 +71,8 @@ if (window.location.hash !== "") {
     });
 
     peer.on('connection', function(c) {
-        connected();
         conn = c;
+        connected(conn);
         conn.on('data', recieveData);
     });
 }
