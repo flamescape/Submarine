@@ -14,7 +14,7 @@
         <h2 ng-if="rtc.connected">Connected Motherfucker!</h2>
         <h2 ng-if="!rtc.connected">Waiting for partner...</h2>
         
-        <div id="chat-box" scroll-glue>
+        <div id="chat-box">
             <article ng-repeat="msg in messages"><b ng-class="{localuser:msg.local}">{{msg.who}}</b>: {{msg.txt}}</article>
         </div>
         <div id="chat-controls">
