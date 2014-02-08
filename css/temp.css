@@ -1,0 +1,8 @@
+#chat {
+    width: 200px;
+    position: absolute;
+}
+
+#chat input  {
+    float: left;
+}
