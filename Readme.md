@@ -11,6 +11,8 @@
 
 ## Image Sources
 
+[Speaker Icon](http://thenounproject.com/term/speaker/6180/)
+
 ## Audio Sources
 
 ## Contributers
