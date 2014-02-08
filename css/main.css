@@ -24,6 +24,8 @@ html,body,#canvas {
     background-color: #253d3d;
     position: absolute;
     box-shadow: inset 0px 0px 50px 20px #2F4F4F;
+    border-radius: 10px;
+    margin: 5px;
 }
 
 #controls h1 {
