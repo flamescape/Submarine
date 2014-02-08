@@ -33,22 +33,18 @@ angular.module('app', [])
         $scope.message = '';
         $scope.rtc = rtc;
         
+        var addMsg = function(who, local, txt){
+            $scope.messages.unshift({who:who,local:local,txt:txt});
+        };
+        
         rtc.onData(function(data){
             if (!data || !data.msgType || data.msgType !== 'chat') return;
-            $scope.messages.push({
-                who:'Them',
-                local: 0,
-                txt: data.txt
-            });
+            addMsg('Them', 0, data.txt);
         });
         
         $scope.sendMessage = function(){
             rtc.send({msgType:'chat', txt:$scope.message});
-            $scope.messages.push({
-                who:'You',
-                local: 1,
-                txt: $scope.message
-            });
+            addMsg('You', 1, $scope.message);
             $scope.message = '';
         };
         
