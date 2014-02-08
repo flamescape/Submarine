@@ -13,6 +13,9 @@ Game.initScene = function(canvasEl){
     // Creating a camera looking to the zero point (0,0,0), a light, and a sphere of size 1
     var camera = new BABYLON.ArcRotateCamera("Camera", 1, 0.8, 10, new BABYLON.Vector3(0, 0, 0), scene);
     var light0 = new BABYLON.PointLight("Omni", new BABYLON.Vector3(20, 15, 10), scene);
+    
+    Game.materialEmptyCube = new BABYLON.StandardMaterial("texture1", scene);
+    Game.materialEmptyCube.alpha = 0.5;
 
     // Attach the camera to the scene
     scene.activeCamera.attachControl(canvasEl);

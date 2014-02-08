@@ -6,6 +6,7 @@ var Gameboard = function(x,y,z){
     this.gridGraphics = this.createGrid(x,y,z, function(x,y,z){
         var box = BABYLON.Mesh.CreateBox("Box", 0.8, Game.scene);
         box.position = new BABYLON.Vector3(x,y,z);
+        box.material = Game.materialEmptyCube;
         return box;
     });
 
