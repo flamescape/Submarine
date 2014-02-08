@@ -23,7 +23,7 @@ html,body,#canvas {
     border: 1px solid rgba(98, 160, 157, 0.5);
     height: 100%;
     width: 300px;
-    background-color: #253d3d;
+    background-color: #415F5F;
     position: absolute;
     box-shadow: inset 0px 0px 50px 20px #2F4F4F;
     border-radius: 10px;
