@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="app">
 <head>
     <title>Submarine</title>
     <link rel="stylesheet" href="css/main.css">
@@ -10,9 +10,17 @@
 <div id="controls">
     <h1>SUBMARINE</h1>
     <input type="text" id="url" readonly>
-    <textarea id="txt" readonly></textarea>
-    <input type="text" id="msg" placeholder="a/s/l?">
-    <button id="button" autofocus>Send</button>
+    
+    <div class="chat-box">
+        <article ng-repeat="msg in msgs"><b ng-class="{localuser:msg.local}">{{msg.who}}</b>: {{msg.txt}}</article>
+    </div>
+    <div class="chat-controls">
+        <!--<textarea id="txt" readonly></textarea>-->
+        <input type="text" placeholder="a/s/l?" ng-keypress="$event.keyCode === 13 && sendMessage()">
+        <button ng-click="sendMessage()">Send</button>
+    </div>
+    
+    
     <div id="placement">
         <input type="number" max="5" min="1" value="1">
         <input type="number" max="5" min="1" value="1">
@@ -32,6 +40,7 @@
 </audio>
 
 <script src="js/lib/underscore-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular.min.js"></script>
 <script src="http://cdn.peerjs.com/0.3/peer.min.js"></script>
 <script src="js/lib/babylon.min.js"></script>
 <script src="js/lib/hand-1.3.5.js"></script>
