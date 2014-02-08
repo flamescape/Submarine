@@ -20,6 +20,7 @@ html,body,#canvas {
 }
 
 #controls {
+    border: 1px solid rgba(98, 160, 157, 0.5);
     height: 100%;
     width: 300px;
     background-color: #253d3d;
@@ -35,10 +36,12 @@ html,body,#canvas {
     font-size: 3em;
     padding: 0;
     font-family: "commandocommando", Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
-    color: #FDFDFF;
-    text-shadow: 1px 1px 0 #333, 2px 2px 0px #333, 3px 3px 0 #333;
     text-align: center;
     letter-spacing: 3px;
+    background: -webkit-linear-gradient(top, #cdd1d0 0%,#97a4ac 58%,#bcd0d9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #2b3a57;
 }
 
 #audio_controls {
