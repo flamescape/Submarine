@@ -10,6 +10,7 @@ var Gameboard = function(x,y,z){
     this.gridGraphics = this.createGrid(x,y,z, function(x,y,z){
         var materialEmptyCube = new BABYLON.StandardMaterial("texture1", Game.scene);
         materialEmptyCube.alpha = 1 - (0.2 * y);
+        materialEmptyCube.diffuseColor = new BABYLON.Color3(1, 0, 1);
         var box = BABYLON.Mesh.CreateBox("Box", 0.9, Game.scene);
         box.position = new BABYLON.Vector3(x,y,z);
         box.material = materialEmptyCube;
