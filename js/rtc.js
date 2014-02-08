@@ -21,14 +21,9 @@ var sendMessage = function() {
     msg.value = "";
 };
 
-//Bind button to send message
-var form = document.getElementById("button");
+var toggleAudio = function() {
 
-if (form.addEventListener) {
-    form.addEventListener("click", sendMessage, false);
-} else if (form.attachEvent) {
-    form.attachEvent("onclick", sendMessage);
-}
+};
 
 //Create an empty length^3 board
 var createBoard = function(length) {
@@ -49,6 +44,13 @@ var createBoard = function(length) {
 
     return threeD;
 };
+
+//Bind elements to send message
+var form = document.getElementById("button");
+form.addEventListener("click", sendMessage, false);
+
+var audioControls = document.getElementById("audio_controls");
+audioControls.addEventListener("click", toggleAudio(audioControls), false);
 
 myBoard = createBoard(length);
 
