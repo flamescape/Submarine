@@ -1,6 +1,7 @@
 #chat {
     width: 200px;
     position: absolute;
+    border: 1px solid rgba(98, 160, 157, 0.5);
 }
 
 #chat input  {

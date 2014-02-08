@@ -3,7 +3,6 @@
 <head>
     <title>Submarine</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/temp.css">
 </head>
 <body>
 
@@ -15,10 +14,10 @@
         <h2 ng-if="rtc.connected">Connected Motherfucker!</h2>
         <h2 ng-if="!rtc.connected">Waiting for partner...</h2>
         
-        <div class="chat-box">
+        <div id="chat-box">
             <article ng-repeat="msg in messages"><b ng-class="{localuser:msg.local}">{{msg.who}}</b>: {{msg.txt}}</article>
         </div>
-        <div class="chat-controls">
+        <div id="chat-controls">
             <input ng-disabled="!rtc.connected" type="text" ng-model="message" placeholder="a/s/l?" ng-keypress="$event.keyCode === 13 && sendMessage()">
             <button ng-disabled="!rtc.connected" ng-click="sendMessage()">Send</button>
         </div>
