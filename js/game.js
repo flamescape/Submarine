@@ -94,7 +94,7 @@ Game.initScene = function(canvasEl){
     });
 };
 
-Game.asplode = function(box) {
+Game.asplode = function(box, hit) {
     var matBoomHit = new BABYLON.StandardMaterial("", Game.scene);
     matBoomHit.diffuseColor = new BABYLON.Color3(1, 0, 0);
     matBoomHit.alpha = 0.5;
@@ -102,15 +102,19 @@ Game.asplode = function(box) {
     matBoom.diffuseColor = new BABYLON.Color3(1, 1, 0.5);
     matBoom.alpha = 0.5;
 
-    var s = BABYLON.Mesh.CreateSphere("", 8, 0.9, Game.scene);
-    s.position = box.position;
-    s.material = matBoomHit;
-    s.isPickable = false;
+    if (hit) {
+        var s = BABYLON.Mesh.CreateSphere("", 8, 0.9, Game.scene);
+        s.position = box.position;
+        s.material = matBoomHit;
+        s.isPickable = false;
+        s.parent = box.parent;
+    }
     
     var s2 = BABYLON.Mesh.CreateSphere("", 8, 0.9, Game.scene);
     s2.position = box.position;
     s2.material = matBoom;
     s2.isPickable = false;
+    s2.parent = box.parent;
     
     var scale = 1;
     var iv = setInterval(function(){
@@ -128,9 +132,33 @@ Game.asplode = function(box) {
 
 conn.then(function(rtc){
     Game.rtc = rtc;
+    
+    Game.rtc.on('data', function(d){
+        if (!d.msgType) return;
+        switch (d.msgType) {
+            case 'hit':
+                Game.asplode(Game.boardRemote.grid[d.x][d.y][d.z], true);
+                break;
+            case 'miss':
+                Game.asplode(Game.boardRemote.grid[d.x][d.y][d.z], false);
+                break;
+            case 'myturn':
+                Game.myTurn = false;
+                break;
+            case 'tryhit':
+                var box = Game.boardRemote.grid[d.x][d.y][d.z];
+                var isHit = box && box.isShip;
+                Game.asplode(box, isHit);
+                Game.rtc.send({msgType: isHit ? 'hit':'miss', x:d.x, y:d.y, z:d.z});
+                break;
+            case 'youwin':
+                document.getElementById('youwin').style.display = 'block';
+                break;
+        }
+    });
 });
 
-Game.myTurn = true;
+Game.myTurn = false;
 Game.selectedLevel = null;
 Game.selectedBox = null;
 
