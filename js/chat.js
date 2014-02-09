@@ -47,10 +47,6 @@ angular.module('app', [])
             addMsg('You', 1, $scope.message);
             $scope.message = '';
         };
-
-        // this is for testing for styling...
-        $scope.messages.push({who:'You',local: 1,txt: 'This is a test from me!'});
-        $scope.messages.push({who:'Them',local: 0,txt: 'Hello you!'});
     })
 
     .controller('AudioCtrl', function($scope, rtc) {
