@@ -176,7 +176,7 @@ hr {
 
 #chat-controls input {
 
-    height: 20px;
+    height: 22px;
     width: 245px;
     margin: 5px 0;
     padding: 0;
@@ -185,14 +185,56 @@ hr {
 }
 
 #chat-controls button {
-    font-family: 'commandocommando', sans-serif;
-    height: 20px;
-    font-size: 1.2em;
+    background: -webkit-linear-gradient(top, #cdd1d0 0%,#bcd0d9 100%);
+    font-family: 'league_gothicregular', sans-serif;
+    height: 21px;
+    font-size: 1em;
     border: none;
-    margin: 5px 0;
+    margin: 6px 0;
     padding: 0;
     width: 50px;
     letter-spacing: 1px;
+}
+
+#theirturn, #myturn, #pleasewait {
+    color: #ECECEC;
+    text-shadow: 2px 2px 1px black;
+    font-family: 'league_gothicregular', sans-serif;
+    font-size: 2em;
+    line-height: 50px;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#theirturn {
+    display: none;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: throbred;
+    -webkit-animation-iteration-count: infinite;
+    background-color: rgba(255, 25, 0, 0.65);
+    box-shadow: inset 0 0 30px 9px rgba(0, 0, 0, 0.5), 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#myturn {
+    display: none;
+    background-color: rgba(81, 255, 0, 0.75);
+    box-shadow: inset 0 0 30px 9px rgba(255, 255, 255, 0.5), 5px 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-name: throb;
+    -webkit-animation-iteration-count: infinite;
+}
+
+#pleasewait {
+    background-color: rgba(30, 20, 230, 0.75);
+    box-shadow: inset 0 0 20px 9px rgba(0, 0, 0, 0.5), 5px 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 .center {

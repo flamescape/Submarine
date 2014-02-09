@@ -13,6 +13,10 @@
 
 <div id="youwin">You have won</div>
 <div id="youlose">You have lost</div>
+<div id="theirturn">Opponent's Turn</div>
+<div id="myturn">Your Turn</div>
+<div id="pleasewait">Please Wait...</div>
+
 
 <div id="controls" ng-cloak>
     <h1>Submarine</h1>
@@ -26,7 +30,7 @@
         </div>
         <div id="chat-controls">
             <input id="chat_input" ng-disabled="!rtc.connected" type="text" ng-model="message" ng-keypress="$event.keyCode === 13 && sendMessage()">
-            <button ng-disabled="!rtc.connected" ng-click="sendMessage()">Send</button>
+            <button ng-disabled="!rtc.connected" ng-click="sendMessage()">SEND</button>
         </div>
     </div>
     <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ss14-team-194.divshot.io" data-text="Check out Submarine by flamescape" data-via="staticshowdown">Tweet</a>
