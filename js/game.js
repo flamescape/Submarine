@@ -86,7 +86,6 @@ Game.initScene = function(canvasEl){
                     _.each(Game.boardRemote.cubes, function(b){
                         b.isPickable = true;
                     });
-                    Game.asplode(box);
                     Game.rtc.send({msgType: 'tryhit', x:box.position.x, y:box.position.y, z:box.position.z});
                     Game.selectedLevel = null;
                 }
@@ -132,10 +131,12 @@ Game.asplode = function(box, hit) {
 };
 
 conn.then(function(rtc){
+    Game.myTurn = (window.location.hash === "");
     Game.rtc = rtc;
     
     Game.rtc.on('data', function(d){
         if (!d.msgType) return;
+        console.log(d);
         switch (d.msgType) {
             case 'hit':
                 Game.asplode(Game.boardRemote.grid[d.x][d.y][d.z], true);
@@ -147,7 +148,7 @@ conn.then(function(rtc){
                 Game.myTurn = false;
                 break;
             case 'tryhit':
-                var box = Game.boardRemote.grid[d.x][d.y][d.z];
+                var box = Game.boardLocal.grid[d.x][d.y][d.z];
                 var isHit = box && box.isShip;
                 Game.asplode(box, isHit);
                 Game.rtc.send({msgType: isHit ? 'hit':'miss', x:d.x, y:d.y, z:d.z});
