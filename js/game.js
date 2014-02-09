@@ -48,6 +48,6 @@ Game.initScene = function(canvasEl){
 };
 
 Game.initScene(document.getElementById("canvas"));
-Game.boardLocal = new Gameboard(5,5,5);
-Game.boardRemote = new Gameboard(5,5,5);
+Game.boardLocal = new Gameboard(5);
+Game.boardRemote = new Gameboard(5);
 Game.boardRemote.group.position.x = -10;
