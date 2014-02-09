@@ -29,6 +29,14 @@ Game.initScene = function(canvasEl){
     engine.runRenderLoop(function () {
         scene.render();
     });
+    
+    window.addEventListener("mousemove", function (evt) {
+        // We try to pick an object
+        var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
+        if (pickResult.hit && pickResult.pickedMesh) {
+            pickResult.pickedMesh.material.diffuseColor = new BABYLON.Color3(0, 0, 1);
+        }
+    });
 };
 
 Game.initScene(document.getElementById("canvas"));
