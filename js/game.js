@@ -126,6 +126,10 @@ Game.asplode = function(box) {
     box.dispose();
 };
 
+conn.then(function(rtc){
+    Game.rtc = rtc;
+});
+
 Game.myTurn = true;
 Game.selectedLevel = null;
 Game.selectedBox = null;
