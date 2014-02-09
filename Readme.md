@@ -34,6 +34,7 @@
  * **Croquettes**
  * [**Dutch Chinese food**](http://www.kingsgardenwageningen.nl/)
  * [**Bella Italia**](http://www.pizzeria-bella-italia.nl/)
- 
+ * [**Wawa**](http://www.wawa.com/)
+ * **Naps**
 
 
