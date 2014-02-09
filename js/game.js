@@ -86,8 +86,14 @@ Game.initScene = function(canvasEl){
                     _.each(Game.boardRemote.cubes, function(b){
                         b.isPickable = true;
                     });
+                    Game.myTurn = null;
                     Game.rtc.send({msgType: 'tryhit', x:box.position.x, y:box.position.y, z:box.position.z});
                     Game.selectedLevel = null;
+                    _.each(Game.boardRemote.cubes, function(b){
+                        b.isPickable = true;
+                        b.material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+                        b.material.alpha = 0.3;
+                    });
                 }
             }
         }
@@ -147,11 +153,16 @@ conn.then(function(rtc){
             case 'myturn':
                 Game.myTurn = false;
                 break;
+            case 'continueyourturn':
+                Game.myTurn = true;
+                break;
             case 'tryhit':
                 var box = Game.boardLocal.grid[d.x][d.y][d.z];
                 var isHit = box && box.isShip;
-                Game.asplode(box, isHit);
+                if (box) Game.asplode(box, isHit);
                 Game.rtc.send({msgType: isHit ? 'hit':'miss', x:d.x, y:d.y, z:d.z});
+                Game.rtc.send({msgType: isHit ? 'continueyourturn' : 'myturn'});
+                if (!isHit) Game.myTurn = true;
                 break;
             case 'youwin':
                 document.getElementById('youwin').style.display = 'block';
