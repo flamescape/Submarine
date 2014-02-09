@@ -1,25 +1,37 @@
-![Logo](http://puu.sh/6OPOt.png)
+![Submarine Logo](http://puu.sh/6OPOt.png)
 
 ## Libraries used
-
-* [AngularJS v1.2.10](http://angularjs.org)
-* [BabylonJS](http://www.babylonjs.com/)
-* [Bluebird v1.0.3](https://npmjs.org/package/bluebird)
-* [Hand v1.3.5](http://handjs.codeplex.com/)
-* [PeerJS v0.3.7](http://peerjs.com/)
-* [Underscore.js v1.5.2](http://underscorejs.org/)
+ * [**AngularJS v1.2.10**](http://angularjs.org)
+ * [**BabylonJS**](http://www.babylonjs.com/)
+ * [**Bluebird v1.0.3**](https://npmjs.org/package/bluebird)
+ * [**Hand v1.3.5**](http://handjs.codeplex.com/)
+ * [**PeerJS v0.3.7**](http://peerjs.com/)
+ * [**Underscore.js v1.5.2**](http://underscorejs.org/)
 
 ## Image Sources
-
-* [Speaker Icon](http://thenounproject.com/term/speaker/6180/)
+ * [**Speakers**](http://thenounproject.com/term/speaker/6180/) designed by Thomas Le Bas from the Noun Project
 
 ## Audio Sources
+ * “[**Shadows under dark water**](http://freemusicarchive.org/music/Bluedark/Places_of_Mystery/04_bluedark_-_shadows_under_dark_water_1413)” ([by Bluedark](http://freemusicarchive.org/music/Bluedark/))
 
 ## Contributors
+ * **Gareth** - _Arbitrary Team Captain_
+ * **John** - _Did all the work_
+ * **Kipke** - _Support Specialist_
 
-* Gareth
-* John
-* Kipke
+## Software Used
+ * [**Audacity**](http://audacity.sourceforge.net/) - _Audio Editing_
+ * **Adobe Illustrator** - _Vector graphics manipulation_
+ * **vim** - _For all advanced WebRTC programming_
+ * **Notepad++** - _For any easy peasy WebGL scripting_
+ 
+ 
 
-## Other stuff??
+## Special Thanks
+ * **Pepsi Max**
+ * **Monster Energy Drinks**
+ * [**Basically Burgers**](http://www.basicallyburgers.com/)
+ * **Croquettes**
+ 
+
 
