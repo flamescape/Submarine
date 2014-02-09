@@ -28,9 +28,11 @@ Gameboard.prototype.placeShipRandomly = function(len) {
         if (place.dir >= 0.5) {
             // try placing one way
             this.grid[place.level][place.row][i].material.alpha = 1;
+            this.grid[place.level][place.row][i].isShip = true;
         } else {
             // try placing the other
             this.grid[i][place.row][place.level].material.alpha = 1;
+            this.grid[i][place.row][place.level].isShip = true;
         }
     }
 };
