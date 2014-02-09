@@ -6,9 +6,13 @@
 </head>
 <body>
 
+<div class="center">
+    <p>Give this URL to your friend!</p>
+    <input type="text" id="url" readonly>
+</div>
+
 <div id="controls">
     <h1>SUBMARINE</h1>
-    <input type="text" id="url" readonly>
     
     <div ng-controller="ChatCtrl" ng-cloak>
         <h2 ng-if="rtc.connected">Connected Motherfucker!</h2>
@@ -21,15 +25,6 @@
             <input ng-disabled="!rtc.connected" type="text" ng-model="message" placeholder="a/s/l?" ng-keypress="$event.keyCode === 13 && sendMessage()">
             <button ng-disabled="!rtc.connected" ng-click="sendMessage()">Send</button>
         </div>
-    </div>
-    
-    
-    <div id="placement">
-        <input type="number" max="5" min="1" value="1">
-        <input type="number" max="5" min="1" value="1">
-        <input type="number" max="5" min="1" value="1">
-        <button id="rotate">Rotate</button>
-        <button id="place">Place</button>
     </div>
 </div>
 <canvas id="canvas"></canvas>
