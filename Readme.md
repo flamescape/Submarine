@@ -17,7 +17,7 @@
 ## Contributors
  * **Gareth** - _Arbitrary Team Captain_
  * **John** - _Did all the work_
- * **Kipke** - _Support Specialist_
+ * **Kipke** - _Support Specialist / Jester_
 
 ## Software Used
  * [**Audacity**](http://audacity.sourceforge.net/) - _Audio Editing_
