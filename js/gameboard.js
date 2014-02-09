@@ -21,10 +21,12 @@ Gameboard.prototype.placeShipRandomly = function(len) {
         if (place.dir >= 0.5) {
             // try placing one way
             this.grid[place.level][place.row][i].material.alpha = 1;
+            this.grid[place.level][place.row][i].material.diffuseColor = new BABYLON.Color3(0, 1, 0);
             this.grid[place.level][place.row][i].isShip = true;
         } else {
             // try placing the other
             this.grid[i][place.row][place.level].material.alpha = 1;
+            this.grid[i][place.row][place.level].material.diffuseColor = new BABYLON.Color3(0, 1, 0);
             this.grid[i][place.row][place.level].isShip = true;
         }
     }
