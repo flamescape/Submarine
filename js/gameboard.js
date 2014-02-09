@@ -39,7 +39,7 @@ Gameboard.prototype.createEmptyCube = function(x,y,z,parent){
     var materialEmptyCube = new BABYLON.StandardMaterial("texture1", Game.scene);
     materialEmptyCube.diffuseColor = new BABYLON.Color3(1, 0, 0);
     
-    var box = BABYLON.Mesh.CreateBox("Box", 0.9, Game.scene);
+    var box = BABYLON.Mesh.CreateSphere("Box", 16, 0.9, Game.scene);
     box.position = new BABYLON.Vector3(x,y,z);
     box.material = materialEmptyCube;
     box.parent = parent;
