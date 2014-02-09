@@ -87,6 +87,7 @@ Game.initScene = function(canvasEl){
                         b.isPickable = true;
                     });
                     Game.myTurn = null;
+                    Game.indicateTurn();
                     Game.rtc.send({msgType: 'tryhit', x:box.position.x, y:box.position.y, z:box.position.z});
                     Game.selectedLevel = null;
                     _.each(Game.boardRemote.cubes, function(b){
@@ -153,6 +154,7 @@ conn.then(function(rtc){
                 break;
             case 'myturn':
                 Game.myTurn = false;
+                Game.indicateTurn();
                 break;
             case 'continueyourturn':
                 Game.myTurn = true;
@@ -173,6 +175,7 @@ conn.then(function(rtc){
                     }
                 } else {
                     Game.myTurn = true;
+                    Game.indicateTurn();
                 }
                 break;
             case 'youwin':
@@ -191,8 +194,24 @@ Game.boardLocal = new Gameboard(5);
 Game.boardLocal.placeShipRandomly(5);
 Game.boardLocal.placeShipRandomly(4);
 Game.boardLocal.placeShipRandomly(3);
-Game.boardLocal.placeShipRandomly(2);
+Game.boardLocal.placeShipRandomly(3);
 Game.boardLocal.placeShipRandomly(2);
 
 Game.boardLocal.group.position.x = -10;
 Game.boardRemote = new Gameboard(5);
+
+Game.indicateTurn = function(){
+    var theirturn = document.getElementById('theirturn');
+    var myturn = document.getElementById('myturn');
+    var wait = document.getElementById('wait');
+    theirturn.style.display = 'none';
+    myturn.style.display = 'none';
+    wait.style.display = 'none';
+    if (Game.myTurn === true) {
+        myturn.style.display = 'block';
+    } else if (Game.myTurn === false) {
+        theirturn.style.display = 'block';
+    } else {
+        wait.style.display = 'block';
+    }
+};
