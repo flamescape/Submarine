@@ -47,7 +47,7 @@ angular.module('app', [])
             addMsg('You', 1, $scope.message);
             $scope.message = '';
         };
-        
+
         // this is for testing for styling...
         $scope.messages.push({who:'You',local: 1,txt: 'This is a test from me!'});
         $scope.messages.push({who:'Them',local: 0,txt: 'Hello you!'});
@@ -62,5 +62,15 @@ angular.module('app', [])
             });
         };
 
+    })
+
+    //http://stackoverflow.com/a/14996261/1832306
+    .directive('selectOnClick', function () {
+        // Linker function
+        return function (scope, element, attrs) {
+            element.bind('click', function () {
+                this.select();
+            });
+        };
     })
 ;
