@@ -86,8 +86,15 @@ html,body,#canvas {
     border-radius: 5px;
 }
 
-#chat {
+.twitter-share-button {
+    display: block;
+    margin: auto;
+}
+#info {
+    margin-top: 10px;
     width: 100%;
+    overflow-y: scroll;
+    background-color: white;
 }
 
 #chat input  {
