@@ -7,12 +7,12 @@
 <body ng-controller="ChatCtrl">
 
 <div class="center" ng-show="!rtc.connected">
-    <p>Give this URL to your friend!</p>
+    <p>Give this game URL to your friend!</p>
     <input type="text" id="url" value="" readonly select-on-click >
 </div>
 
 <div id="youwin">You have won</div>
-<div id="youlose">You have lost!</div>
+<div id="youlose">You have lost</div>
 
 <div id="controls" ng-cloak>
     <h1>Submarine</h1>
@@ -33,6 +33,51 @@
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     <div id="info">
         <h3>How To Play</h3>
+        <p><em>Please use Chrome!</em></p>
+        <p>Find an opponent to battle and give them your game url. The game begins when the uplink is established.</p>
+        <p>When it is your turn, fire a torpedo into enemy territory. Select the depth first by clicking on the enemy's arena, then choose the X and Z coordinates with another click.</p>
+        <p>Each player has five submarines of lengths 5, 4, 3, 3, and 2. The game ends when a player's submarines have all been sunk!</p>
+        <hr>
+        <h3>Team Info</h3>
+        <h4>Contributors</h4>
+        <ul>
+            <li><strong>Gareth</strong> - Arbitrary Team Captain
+            <li><strong>John</strong> - Did all the work
+            <li><strong>Kipke</strong> - Support Specialist
+        </ul>
+        <h4>Libraries Used</h4>
+        <ul>
+            <li><strong>AngularJS v1.2.10</strong> - HTML enhanced for web apps!
+            <li><strong>BabylonJS</strong> - A 3D engine based on WebGL and JavaScript
+            <li><strong>Bluebird v1.0.3</strong> - Full featured Promises/A+ implementation with exceptionally good performance
+            <li><strong>Hand v1.3.5</strong> - A polyfill for supporting pointer events on every browser
+            <li><strong>PeerJS v0.3.7</strong> - Simple peer-to-peer with WebRTC
+            <li><strong>Underscore.js v1.5.2</strong> - A utility-belt library for JavaScript
+        </ul>
+        <h4>Image Sources</h4>
+        <ul>
+            <li>Speaker icons designed by Thomas Le Bas from the Noun Project
+        </ul>
+        <h4>Audio Sources</h4>
+        <ul>
+            <li>"Shadows under dark water" (by Bluedark)
+        </ul>
+        <h4>Software Used</h4>
+        <ul>
+            <li><strong>Audacity</strong> - Audio editing
+            <li><strong>Adobe Illustrator</strong> - Vector graphics manipulation
+            <li><strong>vim</strong> - All advanced programming by the smartest guy on the team
+            <li><strong>Notepad++</strong> - For the other scripting 
+            <li><strong>Notepad</strong> - Kipke...
+        </ul>
+        <h4>Special Thanks</h4>
+        <ul>
+            <li><strong>Pepsi Max</strong>
+            <li><strong>Monster Energy Drinks</strong>
+            <li><strong>Basically Burgers</strong>
+            <li><strong>Croquettes</strong>
+            <li><strong>Naps</strong>
+        </ul>
     </div>
 </div>
 <canvas id="canvas"></canvas>
