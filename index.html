@@ -4,17 +4,17 @@
     <title>Submarine</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
+<body ng-controller="ChatCtrl">
 
-<div class="center">
+<div class="center" ng-show="!rtc.connected">
     <p>Give this URL to your friend!</p>
-    <input type="text" id="url" readonly>
+    <input type="text" id="url" value="" readonly>
 </div>
 
-<div id="controls">
+<div id="controls" ng-cloak>
     <h1>SUBMARINE</h1>
     
-    <div ng-controller="ChatCtrl" ng-cloak>
+    <div>
         <h2 ng-if="rtc.connected">Connected Motherfucker!</h2>
         <h2 ng-if="!rtc.connected">Waiting for partner...</h2>
         
