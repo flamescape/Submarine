@@ -86,12 +86,44 @@ Game.initScene = function(canvasEl){
                     _.each(Game.boardRemote.cubes, function(b){
                         b.isPickable = true;
                     });
-                    box.dispose();
+                    Game.asplode(box);
                     Game.selectedLevel = null;
                 }
             }
         }
     });
+};
+
+Game.asplode = function(box) {
+    var matBoomHit = new BABYLON.StandardMaterial("", Game.scene);
+    matBoomHit.diffuseColor = new BABYLON.Color3(1, 0, 0);
+    matBoomHit.alpha = 0.5;
+    var matBoom = new BABYLON.StandardMaterial("", Game.scene);
+    matBoom.diffuseColor = new BABYLON.Color3(1, 1, 0.5);
+    matBoom.alpha = 0.5;
+
+    var s = BABYLON.Mesh.CreateSphere("", 8, 0.9, Game.scene);
+    s.position = box.position;
+    s.material = matBoomHit;
+    s.isPickable = false;
+    
+    var s2 = BABYLON.Mesh.CreateSphere("", 8, 0.9, Game.scene);
+    s2.position = box.position;
+    s2.material = matBoom;
+    s2.isPickable = false;
+    
+    var scale = 1;
+    var iv = setInterval(function(){
+        scale += 0.1;
+        s2.scaling = new BABYLON.Vector3(scale,scale,scale);
+        matBoom.alpha = 0.5-((scale / 20) * 0.5);
+        if (scale > 20) {
+            s2.dispose();
+            clearInterval(iv);
+        }
+    }, 10);
+    
+    box.dispose();
 };
 
 Game.myTurn = true;
