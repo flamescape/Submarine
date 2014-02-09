@@ -82,10 +82,12 @@ Game.initScene = function(canvasEl){
                     });
                 } else {
                     // pick coords
+                    //Game.selectedBox = box;
                     _.each(Game.boardRemote.cubes, function(b){
                         b.isPickable = true;
                     });
-                    box.isVisible = false;
+                    box.dispose();
+                    Game.selectedLevel = null;
                 }
             }
         }
