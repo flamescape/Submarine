@@ -3,6 +3,23 @@ var myBoard;
 var ships = [5, 4, 3, 3, 2];
 var peer = new Peer({key: "t1oqjc5cdoenrk9"});
 var url = document.getElementById('url');
+var placeholders = ["What happen ?",
+                    "Somebody set up us the bomb.",
+                    "We get signal.",
+                    "What !",
+                    "Main screen turn on.",
+                    "It's you !!",
+                    "How are you gentlemen !!",
+                    "All your base are belong to us.",
+                    "You are on the way to destruction.",
+                    "What you say !!",
+                    "You have no chance to survive make your time.",
+                    "Ha ha ha ha ...",
+                    "Captain !!",
+                    "Take off every 'ZIG'!!",
+                    "You know what you doing.",
+                    "Move 'ZIG'",
+                    "For great justice."];
 
 var toggleAudio = function() {
 
@@ -49,3 +66,12 @@ var conn = new Promise(function(resolve, reject){
         });
     }
 });
+
+var changePlaceholder = function() {
+    var x = Math.floor(Math.random() * (placeholders.length));
+    document.getElementById("chat_input").placeholder = placeholders[x];
+};
+
+changePlaceholder();
+window.setInterval(changePlaceholder, 20000);
+
