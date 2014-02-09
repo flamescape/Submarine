@@ -98,6 +98,7 @@ Gameboard.prototype.createEmptyCube = function(x,y,z,parent){
     this.row[y].push(box);
     box.ownerRow = this.row[y];
     box.ownerBoard = this;
+    box.level = y;
     
     return box;
 };

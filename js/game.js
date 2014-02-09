@@ -33,10 +33,10 @@ Game.initScene = function(canvasEl){
     window.addEventListener("mousemove", function (evt) {
         // We try to pick an object
         if (Game.myTurn) {
-            if (Game.selectedLevel === null) {
-                // pick level
-                var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
-                if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardRemote) {
+            var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
+            if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardRemote) {
+                if (Game.selectedLevel === null) {
+                    // pick level
                     var box = pickResult.pickedMesh;
                     _.each(Game.boardRemote.cubes, function(b){
                         b.material.diffuseColor = new BABYLON.Color3(1, 1, 1);
@@ -46,9 +46,15 @@ Game.initScene = function(canvasEl){
                         b.material.diffuseColor = new BABYLON.Color3(1, 0, 0);
                         b.material.alpha = 1;
                     });
+                } else {
+                    // pick coords
+                    var box = pickResult.pickedMesh;
+                    _.each(box.ownerRow, function(b){
+                        b.material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+                        b.material.alpha = 1;
+                    });
+                    box.material.diffuseColor = new BABYLON.Color3(1, 0, 0);
                 }
-            } else {
-                // pick coords
             }
         }
     });
@@ -61,10 +67,15 @@ Game.initScene = function(canvasEl){
                 var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
                 if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardRemote) {
                     var box = pickResult.pickedMesh;
-                    Game.selectedLevel = box.ownerRow;
+                    Game.selectedLevel = box.level;
                     _.each(Game.boardRemote.cubes, function(b){
+                        b.isPickable = b.level === Game.selectedLevel;
                         b.material.diffuseColor = new BABYLON.Color3(1, 1, 1);
                         b.material.alpha = 0.3;
+                        
+                        if (b.level > Game.selectedLevel) {
+                            b.material.alpha = 0.08;
+                        }
                     });
                     _.each(box.ownerRow, function(b){
                         b.material.diffuseColor = new BABYLON.Color3(1, 1, 0);
