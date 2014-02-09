@@ -56,6 +56,14 @@ html,body,#canvas {
     -webkit-text-stroke: 1px #2b3a57;
 }
 
+.uplink {
+    color: lime;
+}
+
+.waiting {
+    color: rgb(219, 50, 50);
+}
+
 #controls h2 {
     font-family: 'league_gothicregular', sans-serif;
     font-weight: normal;
@@ -63,7 +71,6 @@ html,body,#canvas {
     font-size: 2em;
     text-shadow: 1px 1px 1px #1E1E1E;
     margin: 0 0 10px 0;
-    color: rgb(219, 50, 50);
 }
 
 #audio_controls {

@@ -15,8 +15,8 @@
     <h1>Submarine</h1>
     
     <div>
-        <h2 ng-if="rtc.connected">Connection Established</h2>
-        <h2 ng-if="!rtc.connected">Waiting for opponent...</h2>
+        <h2 ng-if="rtc.connected" class="uplink">Uplink Established</h2>
+        <h2 ng-if="!rtc.connected" class="waiting">Waiting for opponent...</h2>
         
         <div id="chat-box">
             <article ng-repeat="msg in messages"><b ng-class="{localuser:msg.local}">{{msg.who}}</b>: {{msg.txt}}</article>
