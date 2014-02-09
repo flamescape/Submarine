@@ -32,20 +32,55 @@ Game.initScene = function(canvasEl){
     
     window.addEventListener("mousemove", function (evt) {
         // We try to pick an object
-        var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
-        if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardRemote) {
-            var box = pickResult.pickedMesh;
-            _.each(Game.boardRemote.cubes, function(b){
-                b.material.diffuseColor = new BABYLON.Color3(1, 1, 1);
-                b.material.alpha = 0.3;
-            });
-            _.each(box.ownerRow, function(b){
-                b.material.diffuseColor = new BABYLON.Color3(1, 0, 0);
-                b.material.alpha = 1;
-            });
+        if (Game.myTurn) {
+            if (Game.selectedLevel === null) {
+                // pick level
+                var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
+                if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardRemote) {
+                    var box = pickResult.pickedMesh;
+                    _.each(Game.boardRemote.cubes, function(b){
+                        b.material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+                        b.material.alpha = 0.3;
+                    });
+                    _.each(box.ownerRow, function(b){
+                        b.material.diffuseColor = new BABYLON.Color3(1, 0, 0);
+                        b.material.alpha = 1;
+                    });
+                }
+            } else {
+                // pick coords
+            }
+        }
+    });
+    
+    window.addEventListener("click", function (evt) {
+        // We try to pick an object
+        if (Game.myTurn) {
+            if (Game.selectedLevel === null) {
+                // pick level
+                var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
+                if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardRemote) {
+                    var box = pickResult.pickedMesh;
+                    Game.selectedLevel = box.ownerRow;
+                    _.each(Game.boardRemote.cubes, function(b){
+                        b.material.diffuseColor = new BABYLON.Color3(1, 1, 1);
+                        b.material.alpha = 0.3;
+                    });
+                    _.each(box.ownerRow, function(b){
+                        b.material.diffuseColor = new BABYLON.Color3(1, 1, 0);
+                        b.material.alpha = 1;
+                    });
+                }
+            } else {
+                // pick coords
+            }
         }
     });
 };
+
+Game.myTurn = true;
+Game.selectedLevel = null;
+Game.selectedBox = null;
 
 Game.initScene(document.getElementById("canvas"));
 Game.boardLocal = new Gameboard(5);
