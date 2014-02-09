@@ -96,3 +96,10 @@ html,body,#canvas {
     font-family: monospace;
 }
 
+
+#chat-box article:nth-child(2) { opacity: 0.9; }
+#chat-box article:nth-child(3) { opacity: 0.8; }
+#chat-box article:nth-child(4) { opacity: 0.7; }
+#chat-box article:nth-child(5) { opacity: 0.6; }
+#chat-box article:nth-child(n + 6) { opacity: 0.5; }
+
