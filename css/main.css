@@ -239,9 +239,22 @@ hr {
     height: 100%;
     font-size: 5em;
     text-align: center;
-    line-height: 100%:
+    padding-top: 100px;
+    font-family:'commandocommando', sans-serif;
+    -webkit-animation-duration: 0.5s;
+    -webkit-animation-name: dis;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+}
 
+@-webkit-keyframes dis {
+    from {
+        background-color: rgba(255, 0, 0, 0.95);
+    }
 
+    to {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
 }
 
 #wait {
