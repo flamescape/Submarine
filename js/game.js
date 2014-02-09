@@ -87,6 +87,7 @@ Game.initScene = function(canvasEl){
                         b.isPickable = true;
                     });
                     Game.asplode(box);
+                    Game.rtc.send({msgType: 'tryhit', x:box.position.x, y:box.position.y, z:box.position.z});
                     Game.selectedLevel = null;
                 }
             }
