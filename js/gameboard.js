@@ -13,13 +13,6 @@ var Gameboard = function(size){
         board.cubes.push(c);
         return c;
     });
-    
-    this.placeShipRandomly(5);
-    this.placeShipRandomly(4);
-    this.placeShipRandomly(3);
-    this.placeShipRandomly(2);
-    this.placeShipRandomly(2);
-    
 };
 
 Gameboard.prototype.placeShipRandomly = function(len) {

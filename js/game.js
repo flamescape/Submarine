@@ -33,9 +33,9 @@ Game.initScene = function(canvasEl){
     window.addEventListener("mousemove", function (evt) {
         // We try to pick an object
         var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
-        if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardLocal) {
+        if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardRemote) {
             var box = pickResult.pickedMesh;
-            _.each(Game.boardLocal.cubes, function(b){
+            _.each(Game.boardRemote.cubes, function(b){
                 b.material.diffuseColor = new BABYLON.Color3(1, 1, 1);
                 b.material.alpha = 0.3;
             });
@@ -49,5 +49,11 @@ Game.initScene = function(canvasEl){
 
 Game.initScene(document.getElementById("canvas"));
 Game.boardLocal = new Gameboard(5);
+Game.boardLocal.placeShipRandomly(5);
+Game.boardLocal.placeShipRandomly(4);
+Game.boardLocal.placeShipRandomly(3);
+Game.boardLocal.placeShipRandomly(2);
+Game.boardLocal.placeShipRandomly(2);
+
+Game.boardLocal.group.position.x = -10;
 Game.boardRemote = new Gameboard(5);
-Game.boardRemote.group.position.x = -10;
