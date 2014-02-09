@@ -2,6 +2,12 @@ var length = 5;
 var myBoard;
 var ships = [5, 4, 3, 3, 2];
 var peer = new Peer({key: "t1oqjc5cdoenrk9"});
+
+peer.on('error', function(err) {
+    console.log(err);
+
+});
+
 var url = document.getElementById('url');
 var placeholders = ["What happen ?",
                     "Somebody set up us the bomb.",
