@@ -43,10 +43,10 @@ html,body,#canvas {
 }
 
 #controls h1 {
-    margin: 10px 0;
+    margin: 10px 0 0 0;
+    padding: 0;
     font-weight: normal;
     font-size: 3em;
-    padding: 0;
     font-family: "commandocommando", Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif;
     text-align: center;
     letter-spacing: 3px;
@@ -60,6 +60,10 @@ html,body,#canvas {
     font-family: 'league_gothicregular', sans-serif;
     font-weight: normal;
     text-align: center;
+    font-size: 2em;
+    text-shadow: 1px 1px 1px #1E1E1E;
+    margin: 0 0 10px 0;
+    color: rgb(219, 50, 50);
 }
 
 #audio_controls {
@@ -96,12 +100,42 @@ html,body,#canvas {
     font-family: monospace;
 }
 
+#chat-box  b.ng-binding {
+    color: orange;
+}
 
-#chat-box article:nth-child(2) { opacity: 0.9; }
-#chat-box article:nth-child(3) { opacity: 0.8; }
+#chat-box  b.ng-binding.localuser {
+
+    color: lime;
+}
+
+
+#chat-box article:nth-child(2) { opacity: 0.95; }
+#chat-box article:nth-child(3) { opacity: 0.85; }
 #chat-box article:nth-child(4) { opacity: 0.7; }
 #chat-box article:nth-child(5) { opacity: 0.6; }
-#chat-box article:nth-child(n + 6) { opacity: 0.5; }
+#chat-box article:nth-child(n + 6) { opacity: 0.4; }
+
+#chat-controls input {
+
+    height: 20px;
+    width: 245px;
+    margin: 5px 0;
+    padding: 0;
+    border: none;
+    font-family: monospace;
+}
+
+#chat-controls button {
+    font-family: 'commandocommando', sans-serif;
+    height: 20px;
+    font-size: 1.2em;
+    border: none;
+    margin: 5px 0;
+    padding: 0;
+    width: 50px;
+    letter-spacing: 1px;
+}
 
 .center {
     z-index: 2;
@@ -119,7 +153,7 @@ html,body,#canvas {
 
 .center p {
     font-family: 'league_gothicregular', sans-serif;
-    margin: 10px 0;
+    margin: 5px 0;
     text-align: center;
     font-size: 2em;
 }
@@ -127,5 +161,10 @@ html,body,#canvas {
 div.center input {
     width: 100%;
     border: none;
+    font-family: monospace;
+    background: rgba(255, 255, 200, 0.7);
+    border-top: 1px dotted #111;
+    border-bottom: 1px dotted #111;
+    line-height: 2em;
 }
 

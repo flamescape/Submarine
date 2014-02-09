@@ -15,14 +15,14 @@
     <h1>SUBMARINE</h1>
     
     <div>
-        <h2 ng-if="rtc.connected">Connected Motherfucker!</h2>
-        <h2 ng-if="!rtc.connected">Waiting for partner...</h2>
+        <h2 ng-if="rtc.connected">Connection Established</h2>
+        <h2 ng-if="!rtc.connected">Waiting for opponent...</h2>
         
         <div id="chat-box">
             <article ng-repeat="msg in messages"><b ng-class="{localuser:msg.local}">{{msg.who}}</b>: {{msg.txt}}</article>
         </div>
         <div id="chat-controls">
-            <input ng-disabled="!rtc.connected" type="text" ng-model="message" placeholder="a/s/l?" ng-keypress="$event.keyCode === 13 && sendMessage()">
+            <input ng-disabled="!rtc.connected" type="text" ng-model="message" ng-keypress="$event.keyCode === 13 && sendMessage()">
             <button ng-disabled="!rtc.connected" ng-click="sendMessage()">Send</button>
         </div>
     </div>
