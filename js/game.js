@@ -101,8 +101,9 @@ Game.initScene = function(canvasEl){
     });
 };
 
+new Audio('audio/depthbomb.mp3');
 Game.asplode = function(box, hit) {
-    var a = new Audio('audio/depthbomb.ogg');
+    var a = new Audio('audio/depthbomb.mp3');
     a.play();
 
     var matBoomHit = new BABYLON.StandardMaterial("", Game.scene);
