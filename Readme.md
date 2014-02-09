@@ -24,6 +24,7 @@
  * **Adobe Illustrator** - _Vector graphics manipulation_
  * **vim** - _For all advanced WebRTC programming_
  * **Notepad++** - _For any easy peasy WebGL scripting_
+ * **Notepad** - _It's time for an upgrade, Kipke..._
  
  
 
