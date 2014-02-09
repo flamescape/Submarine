@@ -32,6 +32,8 @@
  * **Monster Energy Drinks**
  * [**Basically Burgers**](http://www.basicallyburgers.com/)
  * **Croquettes**
+ * [**Dutch Chinese food**](http://www.kingsgardenwageningen.nl/)
+ * [**Bella Italia**](http://www.pizzeria-bella-italia.nl/)
  
 
 
