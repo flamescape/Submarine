@@ -102,6 +102,9 @@ Game.initScene = function(canvasEl){
 };
 
 Game.asplode = function(box, hit) {
+    var a = new Audio('audio/depthbomb.ogg');
+    a.play();
+
     var matBoomHit = new BABYLON.StandardMaterial("", Game.scene);
     matBoomHit.diffuseColor = new BABYLON.Color3(1, 0, 0);
     matBoomHit.alpha = 0.5;
