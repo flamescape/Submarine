@@ -232,6 +232,7 @@ hr {
 }
 
 #disconnected {
+    display: none;
     z-index: 20000;
     background-color: red;
     position: absolute;
