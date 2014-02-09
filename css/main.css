@@ -191,6 +191,9 @@ div.center input {
 
 #youwin {
     display: none;
+    color: #ECECEC;
+    -webkit-text-stroke: 1px black;
+    text-shadow: 2px 2px 1px black;
     width: 400px;
     height: 200px;
     text-align: center;
@@ -209,5 +212,4 @@ div.center input {
     -webkit-animation-duration: 2s;
     -webkit-animation-name: throb;
     -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
 }
