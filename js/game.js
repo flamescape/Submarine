@@ -35,9 +35,9 @@ Game.initScene = function(canvasEl){
         if (Game.myTurn) {
             var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
             if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardRemote) {
+                var box = pickResult.pickedMesh;
                 if (Game.selectedLevel === null) {
                     // pick level
-                    var box = pickResult.pickedMesh;
                     _.each(Game.boardRemote.cubes, function(b){
                         b.material.diffuseColor = new BABYLON.Color3(1, 1, 1);
                         b.material.alpha = 0.3;
@@ -48,7 +48,6 @@ Game.initScene = function(canvasEl){
                     });
                 } else {
                     // pick coords
-                    var box = pickResult.pickedMesh;
                     _.each(box.ownerRow, function(b){
                         b.material.diffuseColor = new BABYLON.Color3(1, 1, 0);
                         b.material.alpha = 1;
@@ -62,11 +61,11 @@ Game.initScene = function(canvasEl){
     window.addEventListener("click", function (evt) {
         // We try to pick an object
         if (Game.myTurn) {
-            if (Game.selectedLevel === null) {
-                // pick level
-                var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
-                if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardRemote) {
-                    var box = pickResult.pickedMesh;
+            var pickResult = Game.scene.pick(evt.clientX, evt.clientY);
+            if (pickResult.hit && pickResult.pickedMesh && pickResult.pickedMesh.ownerBoard === Game.boardRemote) {
+                var box = pickResult.pickedMesh;
+                if (Game.selectedLevel === null) {
+                    // pick level
                     Game.selectedLevel = box.level;
                     _.each(Game.boardRemote.cubes, function(b){
                         b.isPickable = b.level === Game.selectedLevel;
@@ -81,9 +80,13 @@ Game.initScene = function(canvasEl){
                         b.material.diffuseColor = new BABYLON.Color3(1, 1, 0);
                         b.material.alpha = 1;
                     });
+                } else {
+                    // pick coords
+                    _.each(Game.boardRemote.cubes, function(b){
+                        b.isPickable = true;
+                    });
+                    box.isVisible = false;
                 }
-            } else {
-                // pick coords
             }
         }
     });
