@@ -92,7 +92,7 @@
 <canvas id="canvas"></canvas>
 
 <div ng-controller="AudioCtrl" ng-click="muteAudio()" id="audio_controls">
-    <img src="img/unmute.svg">
+    <img ng-src="{{muteIcon}}">
 </div>
 
 <audio autoplay loop>

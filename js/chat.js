@@ -50,11 +50,17 @@ angular.module('app', [])
     })
 
     .controller('AudioCtrl', function($scope, rtc) {
+        var muted = false;
+        $scope.muteIcon = 'img/unmute.svg';
+        
         $scope.muteAudio = function(){
+            muted = !muted;
+            if (muted) $scope.muteIcon = 'img/mute.svg';
+            else $scope.muteIcon = 'img/unmute.svg';
+            
             var audiosAmigo = document.getElementsByTagName("audio");
             _.each(audiosAmigo, function(ele, i, list) { 
-
-                ele.muted = !ele.muted;
+                ele.muted = muted;
             });
         };
 
