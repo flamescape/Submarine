@@ -133,6 +133,7 @@ Game.asplode = function(box, hit) {
         }
     }, 10);
     
+    box.isShip = null;
     box.dispose();
 };
 
@@ -161,8 +162,18 @@ conn.then(function(rtc){
                 var isHit = box && box.isShip;
                 if (box) Game.asplode(box, isHit);
                 Game.rtc.send({msgType: isHit ? 'hit':'miss', x:d.x, y:d.y, z:d.z});
-                Game.rtc.send({msgType: isHit ? 'continueyourturn' : 'myturn'});
-                if (!isHit) Game.myTurn = true;
+                // check for loss condition
+                if (isHit) {
+                    if (!_.find(Game.boardLocal.cubes, function(b){return b && b.isShip;})) {
+                        Game.myTurn = null;
+                        Game.rtc.send({msgType: 'youwin'});
+                        document.getElementById('youlose').style.display = 'block';
+                    } else {
+                        Game.rtc.send({msgType: isHit ? 'continueyourturn' : 'myturn'});
+                    }
+                } else {
+                    Game.myTurn = true;
+                }
                 break;
             case 'youwin':
                 document.getElementById('youwin').style.display = 'block';
