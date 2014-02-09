@@ -140,6 +140,8 @@ Game.asplode = function(box, hit) {
 
 conn.then(function(rtc){
     Game.myTurn = (window.location.hash === "");
+    Game.indicateTurn();
+    
     Game.rtc = rtc;
     
     Game.rtc.on('data', function(d){
@@ -158,6 +160,7 @@ conn.then(function(rtc){
                 break;
             case 'continueyourturn':
                 Game.myTurn = true;
+                Game.indicateTurn();
                 break;
             case 'tryhit':
                 var box = Game.boardLocal.grid[d.x][d.y][d.z];
@@ -168,12 +171,14 @@ conn.then(function(rtc){
                 if (isHit) {
                     if (!_.find(Game.boardLocal.cubes, function(b){return b && b.isShip;})) {
                         Game.myTurn = null;
+                        Game.indicateTurn();
                         Game.rtc.send({msgType: 'youwin'});
                         document.getElementById('youlose').style.display = 'block';
                     } else {
                         Game.rtc.send({msgType: isHit ? 'continueyourturn' : 'myturn'});
                     }
                 } else {
+                    Game.rtc.send({msgType: 'myturn'});
                     Game.myTurn = true;
                     Game.indicateTurn();
                 }
@@ -185,20 +190,6 @@ conn.then(function(rtc){
     });
 });
 
-Game.myTurn = false;
-Game.selectedLevel = null;
-Game.selectedBox = null;
-
-Game.initScene(document.getElementById("canvas"));
-Game.boardLocal = new Gameboard(5);
-Game.boardLocal.placeShipRandomly(5);
-Game.boardLocal.placeShipRandomly(4);
-Game.boardLocal.placeShipRandomly(3);
-Game.boardLocal.placeShipRandomly(3);
-Game.boardLocal.placeShipRandomly(2);
-
-Game.boardLocal.group.position.x = -10;
-Game.boardRemote = new Gameboard(5);
 
 Game.indicateTurn = function(){
     var theirturn = document.getElementById('theirturn');
@@ -215,3 +206,20 @@ Game.indicateTurn = function(){
         wait.style.display = 'block';
     }
 };
+
+
+Game.myTurn = null;
+Game.indicateTurn();
+Game.selectedLevel = null;
+Game.selectedBox = null;
+
+Game.initScene(document.getElementById("canvas"));
+Game.boardLocal = new Gameboard(5);
+Game.boardLocal.placeShipRandomly(5);
+Game.boardLocal.placeShipRandomly(4);
+Game.boardLocal.placeShipRandomly(3);
+Game.boardLocal.placeShipRandomly(3);
+Game.boardLocal.placeShipRandomly(2);
+
+Game.boardLocal.group.position.x = -10;
+Game.boardRemote = new Gameboard(5);
